@@ -15,11 +15,11 @@ const Home: NextPage = ({ stars, id }: any) => {
   const { user, login, logout } = useAuth();
 
   //aqui te deje una tarea sencilla gabo arregla este "err" ocasionado por typeScript
-  const handleIncrease = (event) =>
+  const handleIncrease = (event: void) =>
     dispatch({
       type: 'INCREASE',
     })
-  const handleDecrease = (event) =>
+  const handleDecrease = (event: void) =>
     dispatch({
       type: 'DECREASE',
     })
