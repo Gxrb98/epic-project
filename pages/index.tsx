@@ -32,6 +32,7 @@ const Home: NextPage = ({ stars, id }: any) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>HOME</h1>
+      <h2>Josu El matatan</h2>
       <p>Next.js has {stars} ⭐️</p>
       <Link href="/preact-stars">
         <a>How about preact?</a>
