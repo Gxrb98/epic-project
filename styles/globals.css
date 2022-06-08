@@ -14,3 +14,79 @@ a {
 * {
   box-sizing: border-box;
 }
+
+/***********************************************************************************************************
+*****************************************Estilos para monitores ********************************************
+***********************************************************************************************************/
+@media screen and (min-width: 900px) {
+  .login-container {
+    background-color: rgb(60, 41, 94);
+    color: white;
+    width: 25vw;
+    height: 65vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+    border-radius: 1.5rem 0 0 1.5rem;
+    box-shadow: -9px 14px 23px 1px rgba(0,0,0,0.56);
+    font-family: 'Helvetica', sans-serif;
+  }
+  
+  .login-container input{
+    color: white;
+    width: auto;
+    border: none;
+    background-color: rgb(60, 41, 94);
+  }
+  
+  .login-container input:focus {
+    outline: none; /* Removes the border when the input is clicked */
+  }
+  
+  .login-container header{
+    margin-top: 15%;
+    font-size: 1rem;
+  }
+
+  .login-container button{
+    margin-top: 15%;
+    background-color: rgb(60, 41, 94);
+    color: white;
+    border: solid 1.5px white;
+    padding: 0.5rem 1.5rem;
+  }
+  
+  .login-container button:hover{
+    background-color: white;
+    color: rgb(60, 41, 94);
+    cursor: pointer;
+    transition-duration: 0.6s;
+  }
+  .login-body{
+    text-align: start;
+    margin-top: 30%;
+  }
+  
+  .login-body label{
+    font-size: 0.8rem;
+  }
+  
+  .login-body-block{
+    margin-top: 10%;
+  }
+  
+  .textInput{
+    border-bottom: solid 1px white;
+  }
+
+  .textInput input{
+    width: 100%;
+  }
+
+  .loginBtn-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
