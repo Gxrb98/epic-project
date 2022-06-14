@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from "../styles/Home.module.css";
+import assets from "..assets/Home.module.css";
 import { useAuth } from "../context/AuthContext";
 import Link from 'next/link'
 import { useCount, useDispatchCount } from '../context/Counter'

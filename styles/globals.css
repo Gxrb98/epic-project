@@ -90,3 +90,47 @@ a {
     align-items: center;
   }
 }
+
+.login-design {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  height: 100vh;
+}
+
+.wave{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-se{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/***********************************************************************************************************
+*****************************************Estilos para LoginPartTwo ********************************************
+***********************************************************************************************************/
+
+.login-design {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  height: 100vh;
+}
+
+.waves {
+  background-image: url('../assets/wave.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
