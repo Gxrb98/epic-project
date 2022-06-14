@@ -42,7 +42,7 @@ const Home: NextPage = ({ stars, id }: any) => {
       <button onClick={handleIncrease}>Increase</button>
       <button onClick={handleDecrease}>Decrease</button>
       <p>
-        <Link href="/about">
+        <Link href={{ pathname: "/about", query: { slug: "data" }, }} >
           <a>ESTO ES UN LINK :/ PERO HACE FALTA PONERLE ESTILO</a>
         </Link>
       </p>
