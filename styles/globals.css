@@ -16,13 +16,13 @@ a {
 }
 
 /***********************************************************************************************************
-*****************************************Estilos para monitores ********************************************
+*****************************************Estilos para computadoras******************************************
 ***********************************************************************************************************/
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 700px) {
   .login-container {
-    background-color: rgb(60, 41, 94);
+    background: linear-gradient(160deg, #3c295e 70%, #ffffff 71%);
     color: white;
-    width: 25vw;
+    width: 25rem;
     height: 65vh;
     display: flex;
     justify-content: center;
@@ -37,7 +37,7 @@ a {
     color: white;
     width: auto;
     border: none;
-    background-color: rgb(60, 41, 94);
+    background-color: #3c295e;
   }
   
   .login-container input:focus {
@@ -88,5 +88,12 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .login-poligon{
+    background-color: white;
+    width: 200px;
+    height: 500px;
+    clip-path: polygon(50% 66%, 100% 100%, 100% 100%, 0 100%);
   }
 }

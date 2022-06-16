@@ -53,6 +53,9 @@ const LoginPartOne: NextPage<Props> = ({user, password}) => {
           <button onClick={submitBtnHandler}>Ingresar</button>
          </div>
         </div>
+        <div className='login-poligon'>
+a
+        </div>
       </div>
     </div>
   )
