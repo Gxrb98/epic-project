@@ -28,42 +28,28 @@ const loginPartTwo: NextPage<Props> = ({user, password}) => {
   return (
     <div className='login-container'>
       <div>
-
-        <div className="wave">
-          <img src="assets/lo" alt="" />
-        </div>
-
         <header>
           <h1>Bienvenido</h1>
           <h2>Ingresa como Desarrollador</h2>
         </header>
-
-
-        <div className='login-design'>
-          <div className=''>
+        <div className='login-body'>
+          <div className='login-body-block'>
             <div>
               <label htmlFor='user'>Usuario</label>
             </div>
-
-            <div className=''>
+            <div className='textInput'>
               <input name='user' type='text' onChange={inputHandler}/>
             </div>
           </div>
-
-
-         <div className=''>
+         <div className='login-body-block'>
           <div>
               <label htmlFor='password'>Contraseña</label>
             </div>
-
-
-            <div className=''>
+            <div className='textInput'>
               <input name='password' type='password' onChange={inputHandler}/>
             </div>
-
-
          </div>
-         <div className=''>
+         <div className='loginBtn-container'>
           <button onClick={submitBtnHandler}>Ingresar</button>
          </div>
         </div>
@@ -71,6 +57,7 @@ const loginPartTwo: NextPage<Props> = ({user, password}) => {
     </div>
   )
 }
+
 
 
 
