@@ -5,5 +5,8 @@
     "error-with-status": "A {{statusCode}} error occurred on server",
     "error-without-status": "An error occurred on the server",
     "title": "Home | next-i18next",
-    "labelUser": "User"
+    "labelUser": "User",
+    "loginText1": "Login as developer",
+    "labelPassword": "Password",
+    "loginBtn": "Login"
 }

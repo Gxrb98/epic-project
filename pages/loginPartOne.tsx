@@ -14,7 +14,7 @@ const LoginPartOne: NextPage<Props> = ({ user, password }) => {
     user,
     password
   });
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('common');
   const inputHandler = (event: any) => {
     event.persist
     setTextInput(
@@ -30,10 +30,9 @@ const LoginPartOne: NextPage<Props> = ({ user, password }) => {
 
   return (
     <div className='login-container'>
-      <div>
+      <div className='container'>
         <header>
-          <h1>Bienvenido</h1>
-          <h2>Ingresa como Desarrollador</h2>
+          <h2>{t("loginText1")}</h2>
         </header>
         <div className='login-body'>
           <div className='login-body-block'>
@@ -46,18 +45,15 @@ const LoginPartOne: NextPage<Props> = ({ user, password }) => {
           </div>
           <div className='login-body-block'>
             <div>
-              <label htmlFor='password'>Contraseña</label>
+              <label htmlFor='password'>{t("labelPassword")}</label>
             </div>
             <div className='textInput'>
               <input name='password' type='password' onChange={inputHandler} />
             </div>
           </div>
           <div className='loginBtn-container'>
-            <button onClick={submitBtnHandler}>Ingresar</button>
+            <button onClick={submitBtnHandler}>{t("loginBtn")}</button>
           </div>
-        </div>
-        <div className='login-poligon'>
-          a
         </div>
       </div>
     </div>

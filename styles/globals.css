@@ -20,10 +20,10 @@ a {
 ***********************************************************************************************************/
 @media screen and (min-width: 700px) {
   .login-container {
-    background: linear-gradient(160deg, #3c295e 70%, #ffffff 71%);
+    background-color: #3c295e;
     color: white;
     width: 25rem;
-    height: 65vh;
+    height: 40rem;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -31,6 +31,10 @@ a {
     border-radius: 1.5rem 0 0 1.5rem;
     box-shadow: -9px 14px 23px 1px rgba(0,0,0,0.56);
     font-family: 'Helvetica', sans-serif;
+  }
+
+  .container{
+    margin-top: 20%;
   }
   
   .login-container input{
@@ -45,12 +49,12 @@ a {
   }
   
   .login-container header{
-    margin-top: 15%;
+    margin-top: 20%;
     font-size: 1rem;
   }
 
   .login-container button{
-    margin-top: 15%;
+    margin-top: 25%;
     background-color: rgb(60, 41, 94);
     color: white;
     border: solid 1.5px white;
@@ -90,10 +94,4 @@ a {
     align-items: center;
   }
 
-  .login-poligon{
-    background-color: white;
-    width: 200px;
-    height: 500px;
-    clip-path: polygon(50% 66%, 100% 100%, 100% 100%, 0 100%);
-  }
 }

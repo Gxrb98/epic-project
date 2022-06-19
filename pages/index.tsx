@@ -16,7 +16,6 @@ const Home: NextPage = ({ stars, id }: any) => {
   const dispatch = useDispatchCount();
   const { user, login, logout } = useAuth();
   const { t } = useTranslation('common')
-  console.log(t)
   const router = useRouter()
   //aqui te deje una tarea sencilla gabo arregla este "err" ocasionado por typeScript
   const handleIncrease = (event: void) =>
