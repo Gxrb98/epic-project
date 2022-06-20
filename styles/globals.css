@@ -20,28 +20,45 @@ a {
 ***********************************************************************************************************/
 @media screen and (min-width: 700px) {
   .login-container {
-    background-color: #3c295e;
-    color: white;
     width: 25rem;
     height: 40rem;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     text-align: center;
-    border-radius: 1.5rem 0 0 1.5rem;
-    box-shadow: -9px 14px 23px 1px rgba(0,0,0,0.56);
     font-family: 'Helvetica', sans-serif;
   }
 
+  .login1{
+    background-color: #3c295e;
+    color: white;
+    border-radius: 0rem 0 0 1.5rem;
+  }
+
+  .login2{
+    background-color: #ffffff;
+    color: #3c295e;
+    border-radius: 0 1.5rem 0 0;
+  }
+
   .container{
-    margin-top: 20%;
+    margin-top: 25%;
+    width: 75%;
   }
   
   .login-container input{
-    color: white;
-    width: auto;
+    width: 100%;
     border: none;
+  }
+
+  .login1 input{
     background-color: #3c295e;
+    color: white;
+  }
+
+  .login2 input{
+    background-color: #ffffff;
+    color:#3c295e;
   }
   
   .login-container input:focus {
@@ -49,49 +66,83 @@ a {
   }
   
   .login-container header{
-    margin-top: 20%;
     font-size: 1rem;
   }
 
   .login-container button{
     margin-top: 25%;
-    background-color: rgb(60, 41, 94);
-    color: white;
-    border: solid 1.5px white;
     padding: 0.5rem 1.5rem;
   }
+
+  .login1 button{
+    border: solid 1.5px #ffffff;
+    color: #3c295e;
+    background-color: #ffffff;
+  }
+
+  .login2 button{
+    border: solid 1.5px #3c295e;
+    color: #ffffff;
+    background-color: #3c295e;
+  }
   
-  .login-container button:hover{
-    background-color: white;
-    color: rgb(60, 41, 94);
+  .login1 button:hover{
+    background-color: #3c295e;
+    color: #ffffff;
     cursor: pointer;
     transition-duration: 0.6s;
   }
+
+  .login2 button:hover{
+    background-color: #ffffff;
+    color: #3c295e;
+    cursor: pointer;
+    transition-duration: 0.6s;
+  }
+
   .login-body{
     text-align: start;
-    margin-top: 30%;
+    margin-top: 25%;
   }
   
   .login-body label{
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
   
   .login-body-block{
     margin-top: 10%;
   }
   
-  .textInput{
+  .textInput1{
     border-bottom: solid 1px white;
   }
 
-  .textInput input{
-    width: 100%;
+  .textInput2{
+    border-bottom: solid 1px #3c295e;
   }
 
-  .loginBtn-container{
+  .login-container input{
+    width: 100%;
+    font-size: 1.1rem;
+    margin-top: 0.2rem;
+  }
+
+  .div-center{
     display: flex;
     justify-content: center;
     align-items: center;
   }
+
+  .div-center button{
+    width: 55%;
+    font-size: 1.1rem;
+  }
+
+  .login-view{
+    height: 100vh;
+    background-color: #e6e6e6;
+  }
+
+
 
 }

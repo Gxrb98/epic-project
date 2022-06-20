@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import { useState } from 'react';
-
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 interface Props{
     user: string,
@@ -11,51 +12,61 @@ const loginPartTwo: NextPage<Props> = ({user, password}) => {
     user,
     password
   });
-
-  const inputHandler = (event:any) =>{
+  const { t } = useTranslation('common');
+  const inputHandler = (event: any) => {
     event.persist
     setTextInput(
       {
-        ...textInput,  [event.target.name]: event.target.value
+        ...textInput, [event.target.name]: event.target.value
       }
     )
   }
 
-  const submitBtnHandler = () =>{
+  const submitBtnHandler = () => {
     alert(`Iniciaste sesión con los siguientes datos: \n Usuario: ${textInput.user} \n Contraseña: ${textInput.password}`)
   }
 
   return (
-    <div className='login-container'>
-      <div>
+    <div className='login-container login2'>
+      <div className='container'>
         <header>
-          <h1>Bienvenido</h1>
-          <h2>Ingresa como Desarrollador</h2>
+          <h2>{t("loginText2")}</h2>
         </header>
         <div className='login-body'>
           <div className='login-body-block'>
             <div>
-              <label htmlFor='user'>Usuario</label>
+              <label htmlFor='user'>{t("labelUser")}</label>
             </div>
-            <div className='textInput'>
-              <input name='user' type='text' onChange={inputHandler}/>
+            <div className='textInput2'>
+              <input name='user' type='text' onChange={inputHandler} />
             </div>
           </div>
-         <div className='login-body-block'>
-          <div>
-              <label htmlFor='password'>Contraseña</label>
+          <div className='login-body-block'>
+            <div>
+              <label htmlFor='password'>{t("labelPassword")}</label>
             </div>
-            <div className='textInput'>
-              <input name='password' type='password' onChange={inputHandler}/>
+            <div className='textInput2'>
+              <input name='password' type='password' onChange={inputHandler} />
             </div>
-         </div>
-         <div className='loginBtn-container'>
-          <button onClick={submitBtnHandler}>Ingresar</button>
-         </div>
+          </div>
+          <div className='div-center'>
+            <button onClick={submitBtnHandler}>{t("loginBtn")}</button>
+          </div>
         </div>
       </div>
     </div>
+
+
   )
+}
+
+
+export async function getStaticProps({ locale }: any) {
+  return {
+    props: {
+      ...await serverSideTranslations(locale, ['common']),
+    },
+  }
 }
 
 

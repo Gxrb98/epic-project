@@ -29,7 +29,7 @@ const LoginPartOne: NextPage<Props> = ({ user, password }) => {
   }
 
   return (
-    <div className='login-container'>
+    <div className='login-container login1'>
       <div className='container'>
         <header>
           <h2>{t("loginText1")}</h2>
@@ -39,7 +39,7 @@ const LoginPartOne: NextPage<Props> = ({ user, password }) => {
             <div>
               <label htmlFor='user'>{t("labelUser")}</label>
             </div>
-            <div className='textInput'>
+            <div className='textInput1'>
               <input name='user' type='text' onChange={inputHandler} />
             </div>
           </div>
@@ -47,16 +47,18 @@ const LoginPartOne: NextPage<Props> = ({ user, password }) => {
             <div>
               <label htmlFor='password'>{t("labelPassword")}</label>
             </div>
-            <div className='textInput'>
+            <div className='textInput1'>
               <input name='password' type='password' onChange={inputHandler} />
             </div>
           </div>
-          <div className='loginBtn-container'>
+          <div className='div-center'>
             <button onClick={submitBtnHandler}>{t("loginBtn")}</button>
           </div>
         </div>
       </div>
     </div>
+
+
   )
 }
 
