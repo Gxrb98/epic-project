@@ -15,6 +15,7 @@ const LoginPartOne: NextPage<Props> = ({ user, password }) => {
     password
   });
   const { t } = useTranslation('common');
+
   const inputHandler = (event: any) => {
     event.persist
     setTextInput(
