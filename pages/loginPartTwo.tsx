@@ -3,11 +3,11 @@ import { useState } from 'react';
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-interface Props{
-    user: string,
-    password: string
+interface Props {
+  user: string,
+  password: string
 }
-const loginPartTwo: NextPage<Props> = ({user, password}) => {
+const LoginPartTwo: NextPage<Props> = ({ user, password }) => {
   const [textInput, setTextInput] = useState({
     user,
     password
@@ -72,4 +72,4 @@ export async function getStaticProps({ locale }: any) {
 
 
 
-export default loginPartTwo
+export default LoginPartTwo
