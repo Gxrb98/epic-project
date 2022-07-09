@@ -7,7 +7,7 @@ type authContextType = {
 };
 
 const authContextDefaultValues: authContextType = {
-    user: null,
+    user: false,
     login: () => { },
     logout: () => { },
 };
@@ -23,7 +23,7 @@ type Props = {
 };
 
 export function AuthProvider({ children }: Props) {
-    const [user, setUser] = useState<boolean>(null);
+    const [user, setUser] = useState<boolean>(false);
 
     const login = () => {
         setUser(true);
