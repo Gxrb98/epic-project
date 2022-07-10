@@ -17,7 +17,7 @@ module.exports = {
   reactStrictMode: true,
   env: {
     BASE_URL: process.env.BASE_URL || 3000,
-    MONGODB_URI: process.env.MONGODB_URI || "mongodb+srv://juan:juanjose25002566@cluster0.qe89v.mongodb.net/valeria?retryWrites=true&w=majority" || 'mongodb://localhost/valeria'
+    MONGODB_URI: process.env.MONGODB_URI || 'mongodb://localhost/valeria'
   },
   i18n,
 }
