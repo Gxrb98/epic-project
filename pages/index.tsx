@@ -9,8 +9,12 @@ import { useCount, useDispatchCount } from '../context/Counter'
 import axios from 'axios'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { dbConnect } from "./api/utils/connect";
+import clientPromise from '../lib/mongodb'
+const Home: NextPage = ({ stars, id, isConnected }: any) => {
 
-const Home: NextPage = ({ stars, id }: any) => {
+  // dbConnect();
+
 
   const count = useCount();
   const dispatch = useDispatchCount();
@@ -40,6 +44,7 @@ const Home: NextPage = ({ stars, id }: any) => {
       <Link href="/preact-stars">
         <a>How about preact?</a>
       </Link>
+      <p>{JSON.stringify(isConnected)}</p>
       <p>Counter: {count}</p>
       <button onClick={() => handleIncrease()}>Increase</button>
       <button onClick={() => handleDecrease()}>Decrease</button>
@@ -74,7 +79,7 @@ const Home: NextPage = ({ stars, id }: any) => {
 
 export async function getStaticProps({ locale }: any) {
 
-
+  await clientPromise
   // const { data } = await axios.get<{ id: number, stargazers_count: number }>('https://api.github.com/repos/vercel/next.js')
   //copia y pega la url en el navegador para ver todo lo q trae ese endpoint
   //esto es literalmente lo mas util de typescript poder dejar por escrito
@@ -83,15 +88,13 @@ export async function getStaticProps({ locale }: any) {
   return {
     props: {
       // stars: stars,
+      isConnected: true,
       ...await serverSideTranslations(locale, ['common']),
     },
   }
 }
 
-// export const getStaticProps = async ({ locale }:any) => ({
-//   props: {
-//    
-//   },
-// })
 
 export default Home
+
+
