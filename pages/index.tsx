@@ -1,17 +1,21 @@
 import type { NextPage } from 'next'
 //import Head from 'next/head'
 //import Image from 'next/image'
-import styles from "../styles/Home.module.css";
+//import styles from "../styles/Home.module.css";
 import { useAuth } from "../context/AuthContext";
 //import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useCount, useDispatchCount } from '../context/Counter'
-import axios from 'axios'
+//import axios from 'axios'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//import { dbConnect } from "./api/utils/connect";
+//import clientPromise from '../lib/mongodb'
 import Login from './login';
+const Home: NextPage = ({ stars, id, isConnected }: any) => {
 
-const Home: NextPage = ({ stars, id }: any) => {
+  // dbConnect();
+
 
   const count = useCount();
   const dispatch = useDispatchCount();
@@ -27,10 +31,10 @@ const Home: NextPage = ({ stars, id }: any) => {
       type: 'DECREASE',
     })
 
-    if (user) {
+    if(user) {
       return (
-        <div className={styles.container}>
-          You Are Logged In
+        <div>
+          You Are logged In
         </div>
       )
     }else{
@@ -40,27 +44,33 @@ const Home: NextPage = ({ stars, id }: any) => {
     }
 }
 
-
-export async function getStaticProps({ locale }: any) {
-
-
-  // const { data } = await axios.get<{ id: number, stargazers_count: number }>('https://api.github.com/repos/vercel/next.js')
-  //copia y pega la url en el navegador para ver todo lo q trae ese endpoint
-  //esto es literalmente lo mas util de typescript poder dejar por escrito
-  //los keys y los tipos de datos que trae el endpoint
-  // const stars = data.stargazers_count
-  return {
-    props: {
-      // stars: stars,
-      ...await serverSideTranslations(locale, ['common']),
-    },
+// export async function getStaticProps({ locale, clientPromise }: any) {
+export async function getServerSideProps({ locale, clientPromise }: any) {
+  try {
+    await clientPromise
+    console.log(clientPromise)
+    // const { data } = await axios.get<{ id: number, stargazers_count: number }>('https://api.github.com/repos/vercel/next.js')
+    //copia y pega la url en el navegador para ver todo lo q trae ese endpoint
+    //esto es literalmente lo mas util de typescript poder dejar por escrito
+    //los keys y los tipos de datos que trae el endpoint
+    // const stars = data.stargazers_count
+    return {
+      props: {
+        // stars: stars,
+        isConnected: true,
+        ...await serverSideTranslations(locale, ['common']),
+      },
+    }
+  } catch (e) {
+    console.error(e)
+    return {
+      props: { isConnected: false },
+    }
   }
 }
 
-// export const getStaticProps = async ({ locale }:any) => ({
-//   props: {
-//    
-//   },
-// })
+
 
 export default Home
+
+

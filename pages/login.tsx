@@ -4,25 +4,23 @@ import type { NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
+const Login: NextPage = () => {
 
-
-const Login: NextPage = () =>{
-
-    return(
-        <div className="div-center login-view">
-            <div className="div-center">
-                <LoginPartOne/>
-                <LoginPartTwo/>
-            </div>
-        </div>
-        )
+  return (
+    <div className="div-center login-view">
+      <div className="div-center">
+        <LoginPartOne user="" password="" />
+        <LoginPartTwo user="" password="" />
+      </div>
+    </div>
+  )
 }
 
 export async function getStaticProps({ locale }: any) {
-    return {
-      props: {
-        ...await serverSideTranslations(locale, ['common']),
-      },
-    }
+  return {
+    props: {
+      ...await serverSideTranslations(locale, ['common']),
+    },
   }
+}
 export default Login

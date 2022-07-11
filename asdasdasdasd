@@ -1,0 +1,10 @@
+// GITHUB_ID = 9237658cdb951864
+// GITHUB_SECRET = sBh02bNAcrp5yF2gTv2XGVDYaGE1aetMw6OTZopwMlU=
+// MONGODB_URI =  process.env.MONGODB_URI || 'mongodb://localhost/valeria'
+// PORT =  process.env.PORT || 3000
+// SECRET = 9e9befa0b4635aa1c3681f16a35765829739860e5e2305e9eb6f709175ab97c57
+
+
+// NEXTAUTH_URL=http://localhost:3000
+// NEXTAUTH_SECRET= # Linux: `openssl rand -hex 32` or go to https://generate-secret.now.sh/32
+
