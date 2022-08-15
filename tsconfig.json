@@ -17,13 +17,18 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "noImplicitAny": false
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "context/Counter.js"
+    "context/Counter.js",
+    "pages/api/request/post/project.js",
+    "pages/api/request/post/user.js",
+    "pages/api/request/get/project.js",
+    "pages/api/request/get/user.js"
   ],
   "exclude": [
     "node_modules"

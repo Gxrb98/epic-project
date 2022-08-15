@@ -29,6 +29,8 @@ const LoginPartOne: NextPage<Props> = ({ user, password }) => {
     alert(`Iniciaste sesión con los siguientes datos: \n Usuario: ${textInput.user} \n Contraseña: ${textInput.password}`)
   }
 
+
+
   return (
     <div className='login-container login1'>
       <div className='container'>
