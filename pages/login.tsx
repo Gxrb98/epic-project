@@ -1,13 +1,15 @@
-import { useState } from "react"
+import { useState } from "react";
 import LoginPartOne from "./loginPartOne";
 import LoginPartTwo from "./loginPartTwo";
-import type { NextPage } from 'next'
-import { useTranslation } from 'next-i18next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import type { NextPage } from 'next';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import api from "../lib/api";
-
-const Login: NextPage = () => {
+import { useLocalStorage, useSessionStorage } from "../hooks/useStorage"
+const Login: NextPage = ({ win }) => {
   const [id, setid] = useState("");
+  console.log(win)
+  // const [value, setValue, remove] = useLocalStorage("key", "value");
 
   const handleSubmitGetClient = async () => {
     try {
@@ -21,10 +23,10 @@ const Login: NextPage = () => {
   const handleDeleteClient = async (e, _id) => {
     e.preventDefault();
     try {
-      const { data } = await api.delete(`/user/${_id}`);
-      console.log(data.message)
+      const { data } = await api.delete(`/user/${_id}`, { headers: { 'x-access-token': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZ…DU5fQ.Ag6i_wbQFcR6__mcjDGubcH56dGMymFYEs2sxhGLPzY" } });
+      console.log(data)
     } catch (error: any) {
-      console.log(error.response.data.message);
+      console.log(error);
     }
   }
 
@@ -43,7 +45,7 @@ const Login: NextPage = () => {
   const handlesignup = async () => {
     try {
       const { data } = await api.post("/auth/signup", {
-        "email": "pepito@localhost",
+        "email": "asdasdasdasdas@localhost",
         "pass": "1234"
       });
       console.log(data)
@@ -52,10 +54,14 @@ const Login: NextPage = () => {
     }
   };
 
+
+
   return (
     <div className="div-center login-view">
       <div className="div-center">
         <div style={{ display: "flex", flexDirection: "column" }}>
+
+          {/* <button onClick={() => setValue("asdasdasdasdasdas")}><text>setValue</text></button> */}
           <button onClick={() => handlesignup()}><text>signup</text></button>
           <button onClick={() => handleSignin()}><text>handleSignin</text></button>
           <button onClick={() => handleSubmitGetClient()}><text>get</text></button>
@@ -70,9 +76,11 @@ const Login: NextPage = () => {
 }
 
 export async function getStaticProps({ locale }: any) {
+
   return {
     props: {
       ...await serverSideTranslations(locale, ['common']),
+      win: window.localStorage
     },
   }
 }
