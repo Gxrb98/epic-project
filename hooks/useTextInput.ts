@@ -1,22 +1,25 @@
 import { ChangeEvent, useState } from "react";
 
-export const useTextInput = (evnt) : ChangeEvent<HTMLInputElement> => {
 
-  const [textInput, setTextInput] = useState({
-    user: '',
-    password: ''
-  });
- 
- // const target = evnt.target as HTMLInputElement
-  setTextInput(
-    {
-      ...textInput, [evnt.target.name]: evnt.target.value
-    }
-  );
+interface form {
+  user: string,
+  password: string
+}
+
+const useTextInput = (initialState: form) => {
+
+  const [textInput, setTextInput] = useState<form>(initialState);
+
+  const handlerForm = (e: ChangeEvent<HTMLInputElement>) => {
+    // console.log(e.target.value)
+    const newValues = { ...textInput, [e.target.name]: e.target.value }
+    setTextInput(newValues)
+  }
 
   return {
-    textInput,
-    useTextInput,
-    evnt
+    textInput, handlerForm
   };
 }
+
+
+export default useTextInput

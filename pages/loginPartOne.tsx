@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { useState } from 'react';
-import { useTextInput } from '../hooks/useTextInput'
+import useTextInput from '../hooks/useTextInput';
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
@@ -29,7 +29,15 @@ const LoginPartOne: NextPage<Props> = ({ user, password }) => {
   //   alert(`Iniciaste sesión con los siguientes datos: \n Usuario: ${textInput.user} \n Contraseña: ${textInput.password}`)
   // }
 
-const { textInput, evnt } = useTextInput()
+  const { textInput, handlerForm } = useTextInput({ password, user });
+  // console.log(evnt);
+
+
+  const handlerInput = (text: string, name: String) => {
+
+  }
+
+  console.log(textInput)
 
   return (
     <div className='login-container login1'>
@@ -43,7 +51,8 @@ const { textInput, evnt } = useTextInput()
               <label htmlFor='user'>{t("labelUser")}</label>
             </div>
             <div className='textInput1'>
-              <input name='user' value={textInput.user} type='text' onChange={useTextInput} />
+              <input name='user' type='text' value={textInput.user} onChange={(e) => handlerForm(e)} />
+
             </div>
           </div>
           <div className='login-body-block'>
@@ -51,7 +60,7 @@ const { textInput, evnt } = useTextInput()
               <label htmlFor='password'>{t("labelPassword")}</label>
             </div>
             <div className='textInput1'>
-              <input name='password' value={textInput.password} type='password' />
+              <input name='password' type='password' value={textInput.password} onChange={(e) => handlerForm(e)} />
             </div>
           </div>
           <div className='div-center'>
