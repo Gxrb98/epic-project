@@ -56,13 +56,10 @@ const Login: NextPage = () => {
     }
   };
 
-
-
   return (
     <div className="div-center login-view">
       <div className="div-center">
         <div style={{ display: "flex", flexDirection: "column" }}>
-
           {/* <button onClick={() => setValue("asdasdasdasdasdas")}><text>setValue</text></button> */}
           <button onClick={() => handlesignup()}><text>signup</text></button>
           <button onClick={() => handleSignIn()}><text>handleSignin</text></button>
@@ -70,8 +67,8 @@ const Login: NextPage = () => {
           <input value={id} onChange={(e) => setid(e.target.value)}></input>
           <button onClick={(e) => handleDeleteClient(e, id)}><text>delete</text></button>
         </div>
-        <LoginPartOne user="" password="" />
-        <LoginPartTwo user="" password="" />
+        <LoginPartOne />
+        <LoginPartTwo />
       </div>
     </div>
   )

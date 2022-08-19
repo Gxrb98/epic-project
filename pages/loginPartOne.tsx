@@ -1,43 +1,15 @@
-import type { NextPage } from 'next';
-import { useState } from 'react';
-import useTextInput from '../hooks/useTextInput';
+import useLoginForm from '../hooks/useLoginForm';
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-interface Props {
-  user: string,
-  password: string
-}
 
-const LoginPartOne: NextPage<Props> = ({ user, password }) => {
-  // const [textInput, setTextInput] = useState({
-  //   user,
-  //   password
-  // });
+const LoginPartOne = () => {
   const { t } = useTranslation('common');
+  const { textInput, handlerForm, handleSignIn } = useLoginForm({ user: "", password: ""});
 
-  // const inputHandler = (event: any) => {
-  //   event.persist
-  //   setTextInput(
-  //     {
-  //       ...textInput, [event.target.name]: event.target.value
-  //     }
-  //   )
-  // }
-
-  // const submitBtnHandler = () => {
-  //   alert(`Iniciaste sesión con los siguientes datos: \n Usuario: ${textInput.user} \n Contraseña: ${textInput.password}`)
-  // }
-
-  const { textInput, handlerForm } = useTextInput({ password, user });
-  // console.log(evnt);
-
-
-  const handlerInput = (text: string, name: String) => {
-
+  const submitBtnHandler = () => {
+    alert(`Iniciaste sesión con los siguientes datos: \n Usuario: ${textInput.user} \n Contraseña: ${textInput.password}`)
   }
-
-  console.log(textInput)
 
   return (
     <div className='login-container login1'>
@@ -52,7 +24,6 @@ const LoginPartOne: NextPage<Props> = ({ user, password }) => {
             </div>
             <div className='textInput1'>
               <input name='user' type='text' value={textInput.user} onChange={(e) => handlerForm(e)} />
-
             </div>
           </div>
           <div className='login-body-block'>
@@ -64,16 +35,13 @@ const LoginPartOne: NextPage<Props> = ({ user, password }) => {
             </div>
           </div>
           <div className='div-center'>
-            <button >{t("loginBtn")}</button>
+            <button onClick={handleSignIn}>{t("loginBtn")}</button>
           </div>
         </div>
       </div>
     </div>
-
-
   )
 }
-
 
 export async function getStaticProps({ locale }: any) {
   return {

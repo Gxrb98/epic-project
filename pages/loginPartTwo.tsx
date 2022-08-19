@@ -1,26 +1,11 @@
-import type { NextPage } from 'next';
-import { useState } from 'react';
+import useLoginForm from '../hooks/useLoginForm';
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-interface Props {
-  user: string,
-  password: string
-}
-const LoginPartTwo: NextPage<Props> = ({ user, password }) => {
-  const [textInput, setTextInput] = useState({
-    user,
-    password
-  });
+
+const LoginPartTwo = () => {
   const { t } = useTranslation('common');
-  const inputHandler = (event: any) => {
-    event.persist
-    setTextInput(
-      {
-        ...textInput, [event.target.name]: event.target.value
-      }
-    )
-  }
+  const { textInput, handlerForm } = useLoginForm({ user: "", password: ""});
 
   const submitBtnHandler = () => {
     alert(`Iniciaste sesión con los siguientes datos: \n Usuario: ${textInput.user} \n Contraseña: ${textInput.password}`)
@@ -38,7 +23,7 @@ const LoginPartTwo: NextPage<Props> = ({ user, password }) => {
               <label htmlFor='user'>{t("labelUser")}</label>
             </div>
             <div className='textInput2'>
-              <input name='user' type='text' onChange={inputHandler} />
+              <input name='user' type='text' value={textInput.user} onChange={(e) => handlerForm(e)} />
             </div>
           </div>
           <div className='login-body-block'>
@@ -46,7 +31,7 @@ const LoginPartTwo: NextPage<Props> = ({ user, password }) => {
               <label htmlFor='password'>{t("labelPassword")}</label>
             </div>
             <div className='textInput2'>
-              <input name='password' type='password' onChange={inputHandler} />
+              <input name='password' type='password' value={textInput.password} onChange={(e) => handlerForm(e)} />
             </div>
           </div>
           <div className='div-center'>
@@ -55,11 +40,8 @@ const LoginPartTwo: NextPage<Props> = ({ user, password }) => {
         </div>
       </div>
     </div>
-
-
   )
 }
-
 
 export async function getStaticProps({ locale }: any) {
   return {
