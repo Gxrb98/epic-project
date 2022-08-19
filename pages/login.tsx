@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { MouseEventHandler, useState } from "react";
 import LoginPartOne from "./loginPartOne";
 import LoginPartTwo from "./loginPartTwo";
 import type { NextPage } from 'next';
@@ -6,9 +6,11 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import api from "../lib/api";
 import { useLocalStorage, useSessionStorage } from "../hooks/useStorage"
-const Login: NextPage = ({ win }) => {
+
+
+const Login: NextPage = () => {
   const [id, setid] = useState("");
-  console.log(win)
+  
   // const [value, setValue, remove] = useLocalStorage("key", "value");
 
   const handleSubmitGetClient = async () => {
@@ -20,7 +22,7 @@ const Login: NextPage = ({ win }) => {
     }
   };
 
-  const handleDeleteClient = async (e, _id) => {
+  const handleDeleteClient = async (e, _id: Number) => {
     e.preventDefault();
     try {
       const { data } = await api.delete(`/user/${_id}`, { headers: { 'x-access-token': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZ…DU5fQ.Ag6i_wbQFcR6__mcjDGubcH56dGMymFYEs2sxhGLPzY" } });
@@ -30,7 +32,7 @@ const Login: NextPage = ({ win }) => {
     }
   }
 
-  const handleSignin = async () => {
+  const handleSignIn = async () => {
     try {
       const { data } = await api.post("/auth/signin", {
         "email": "admin@localhost",
@@ -63,7 +65,7 @@ const Login: NextPage = ({ win }) => {
 
           {/* <button onClick={() => setValue("asdasdasdasdasdas")}><text>setValue</text></button> */}
           <button onClick={() => handlesignup()}><text>signup</text></button>
-          <button onClick={() => handleSignin()}><text>handleSignin</text></button>
+          <button onClick={() => handleSignIn()}><text>handleSignin</text></button>
           <button onClick={() => handleSubmitGetClient()}><text>get</text></button>
           <input value={id} onChange={(e) => setid(e.target.value)}></input>
           <button onClick={(e) => handleDeleteClient(e, id)}><text>delete</text></button>
@@ -79,8 +81,7 @@ export async function getStaticProps({ locale }: any) {
 
   return {
     props: {
-      ...await serverSideTranslations(locale, ['common']),
-      win: window.localStorage
+      ...await serverSideTranslations(locale, ['common'])
     },
   }
 }

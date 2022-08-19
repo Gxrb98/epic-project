@@ -22,6 +22,7 @@ function Dashboard() {
         }
         router.push("/login");
     };
+
     return (
         <div>
             {JSON.stringify(user)}

@@ -29,7 +29,7 @@
     "pages/api/request/post/user.js",
     "pages/api/request/get/project.js",
     "pages/api/request/get/user.js"
-  ],
+, "hooks/useTextInput.ts"  ],
   "exclude": [
     "node_modules"
   ]
