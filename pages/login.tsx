@@ -10,7 +10,7 @@ import { useLocalStorage, useSessionStorage } from "../hooks/useStorage"
 
 const Login: NextPage = () => {
   const [id, setid] = useState("");
-  
+
   // const [value, setValue, remove] = useLocalStorage("key", "value");
 
   const handleSubmitGetClient = async () => {

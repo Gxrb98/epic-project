@@ -29,17 +29,20 @@ const useLoginForm = (initialState: form) => {
       const { data } = await api.post("/auth/signin", loginForm);
       window.localStorage.setItem('token', JSON.stringify(data.token));
 
-      if(data.token){
+      if (data.token) {
         login()
+        console.log(data.token)
+        window.location.href = "/dashboard"
       }
 
     } catch (error) {
+      window.location.href = "/notfound"
       console.log(error);
     }
   };
   return {
-    textInput, 
-    handlerForm, 
+    textInput,
+    handlerForm,
     handleSignIn
   };
 }
