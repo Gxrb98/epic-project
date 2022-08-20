@@ -1,15 +1,17 @@
 import type { NextPage } from 'next'
-//import Head from 'next/head'
-//import Image from 'next/image'
-//import styles from "../styles/Home.module.css";
 import { useAuth } from "../context/AuthContext";
-//import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useCount, useDispatchCount } from '../context/Counter'
 import axios from 'axios'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Login from './login';
+import Dashboard from './dashboard';
+//import { useEffect } from 'react';
+
+
+
+
 const Home: NextPage = ({ stars, id, isConnected, users }: any) => {
 
   console.log(users)
@@ -22,6 +24,13 @@ const Home: NextPage = ({ stars, id, isConnected, users }: any) => {
   const { user, login, logout } = useAuth();
   const { t } = useTranslation('common')
   const router = useRouter()
+
+
+  // useEffect(()=>{
+  //   const USER_TOKEN = window.localStorage.getItem('token')
+  //   console.log(USER_TOKEN) 
+  // }, [])
+  
   const handleIncrease = (event: void) =>
     dispatch({
       type: 'INCREASE',
@@ -33,9 +42,7 @@ const Home: NextPage = ({ stars, id, isConnected, users }: any) => {
 
   if (user) {
     return (
-      <div>
-        You Are logged In
-      </div>
+      <Dashboard/>
     )
   } else {
     return (
