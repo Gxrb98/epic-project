@@ -16,8 +16,12 @@ const useLoginForm = (initialState: form) => {
   }
 
   const handleSignIn = async () => {
+    let loginForm = {
+      email: textInput.user,
+      pass: textInput.password
+    }
     try {
-      const { data } = await api.post("/auth/signin", { textInput });
+      const { data } = await api.post("/auth/signin", loginForm);
       console.log(data);
     } catch (error) {
       console.log(error);
