@@ -13,7 +13,7 @@ interface form {
 const useLoginForm = (initialState: form) => {
 
   const [textInput, setTextInput] = useState<form>(initialState);
-  const { login } = useAuth();
+  const { login, saveToken } = useAuth();
 
   const handlerForm = (e: ChangeEvent<HTMLInputElement>) => {
     const newValues = { ...textInput, [e.target.name]: e.target.value }
@@ -27,12 +27,9 @@ const useLoginForm = (initialState: form) => {
     }
     try {
       const { data } = await api.post("/auth/signin", loginForm);
-      window.localStorage.setItem('token', JSON.stringify(data.token));
-
       if (data.token) {
-        login()
-        console.log(data.token)
-        window.location.href = "/dashboard"
+        window.localStorage.setItem('token', JSON.stringify(data.token));
+        saveToken(data.token)
       }
 
     } catch (error) {

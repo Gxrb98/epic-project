@@ -2,14 +2,18 @@ import { createContext, useContext, ReactNode, useState } from "react";
 
 type authContextType = {
     user: boolean;
+    token: string;
     login: () => void;
     logout: () => void;
+    saveToken: () => void;
 };
 
 const authContextDefaultValues: authContextType = {
     user: false,
+    token: "",
     login: () => { },
     logout: () => { },
+    saveToken: () => { }
 };
 
 const AuthContext = createContext<authContextType>(authContextDefaultValues);
@@ -24,6 +28,7 @@ type Props = {
 
 export function AuthProvider({ children }: Props) {
     const [user, setUser] = useState<boolean>(false);
+    const [token, setToken] = useState<string>('')
 
     const login = () => {
         setUser(true);
@@ -33,10 +38,16 @@ export function AuthProvider({ children }: Props) {
         setUser(false);
     };
 
+    const saveToken = (authToken: string) =>{
+        setToken(authToken)
+    };
+
     const value = {
         user,
+        token,
         login,
         logout,
+        saveToken
     };
 
     return (
