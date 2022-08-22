@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../hooks/useAuth";
 import { useRouter } from 'next/router'
 import { useCount, useDispatchCount } from '../context/Counter'
 import axios from 'axios'
@@ -7,13 +7,12 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Login from './login';
 import Dashboard from './dashboard';
-//import { useEffect } from 'react';
-
+import { useEffect } from 'react';
 
 
 
 const Home: NextPage = ({ stars, id, isConnected, users }: any) => {
-
+  
   console.log(users)
   // documentar
   /**
@@ -21,15 +20,19 @@ const Home: NextPage = ({ stars, id, isConnected, users }: any) => {
    */
   const count = useCount();
   const dispatch = useDispatchCount();
-  const { user, login, logout } = useAuth();
+  const { token, saveToken } = useAuth();
   const { t } = useTranslation('common')
   const router = useRouter()
+ 
 
+  useEffect(()=>{
+    const getTokenFromStorage = () => {
+      const USER_TOKEN: string | null = window.localStorage.getItem('token')
+      saveToken(USER_TOKEN)
+    }
 
-  // useEffect(()=>{
-  //   const USER_TOKEN = window.localStorage.getItem('token')
-  //   console.log(USER_TOKEN) 
-  // }, [])
+    getTokenFromStorage()
+  }, [])
   
   const handleIncrease = (event: void) =>
     dispatch({
@@ -40,7 +43,7 @@ const Home: NextPage = ({ stars, id, isConnected, users }: any) => {
       type: 'DECREASE',
     })
 
-  if (user) {
+  if (token) {
     return (
       <Dashboard/>
     )

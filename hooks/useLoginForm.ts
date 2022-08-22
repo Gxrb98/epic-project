@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from "react";
 import api from "../lib/api";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "./useAuth";
 
 
 interface form {
@@ -13,7 +13,7 @@ interface form {
 const useLoginForm = (initialState: form) => {
 
   const [textInput, setTextInput] = useState<form>(initialState);
-  const { login, saveToken } = useAuth();
+  const { saveToken } = useAuth();
 
   const handlerForm = (e: ChangeEvent<HTMLInputElement>) => {
     const newValues = { ...textInput, [e.target.name]: e.target.value }
@@ -28,7 +28,7 @@ const useLoginForm = (initialState: form) => {
     try {
       const { data } = await api.post("/auth/signin", loginForm);
       if (data.token) {
-        window.localStorage.setItem('token', JSON.stringify(data.token));
+        window.localStorage.setItem('token', data.token);
         saveToken(data.token)
       }
 
