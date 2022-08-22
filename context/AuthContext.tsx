@@ -5,7 +5,7 @@ type authContextType = {
     token: string;
     login: () => void;
     logout: () => void;
-    saveToken: () => void;
+    saveToken: (authToken: string) => void;
 };
 
 const authContextDefaultValues: authContextType = {
@@ -38,8 +38,8 @@ export function AuthProvider({ children }: Props) {
         setUser(false);
     };
 
-    const saveToken = (authToken: string) =>{
-        setToken(authToken)
+    const saveToken = (authToken: string) => {
+        setToken(authToken);
     };
 
     const value = {
