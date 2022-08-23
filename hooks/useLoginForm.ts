@@ -1,11 +1,11 @@
 import { ChangeEvent, useState } from "react";
 import api from "../lib/api";
-import { useAuth } from "./useAuth";
+import useAuth from "./useAuth";
 
 
 interface form {
-  user: string,
-  password: string
+  user?: string,
+  password?: string
 }
 
 
@@ -37,10 +37,17 @@ const useLoginForm = (initialState: form) => {
       console.log(error);
     }
   };
+
+  const handleLogOut = () =>{
+    window.localStorage.removeItem('token')
+    saveToken(null)
+  }
+
   return {
     textInput,
     handlerForm,
-    handleSignIn
+    handleSignIn,
+    handleLogOut
   };
 }
 

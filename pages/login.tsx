@@ -60,15 +60,15 @@ const Login: NextPage = () => {
     <div className="div-center login-view">
       <div className="div-center">
         <div style={{ display: "flex", flexDirection: "column" }}>
-          {/* <button onClick={() => setValue("asdasdasdasdasdas")}><text>setValue</text></button> */}
+          {/* <button onClick={() => setValue("asdasdasdasdasdas")}><text>setValue</text></button> 
           <button onClick={() => handlesignup()}><text>signup</text></button>
           <button onClick={() => handleSignIn()}><text>handleSignin</text></button>
           <button onClick={() => handleSubmitGetClient()}><text>get</text></button>
           <input value={id} onChange={(e) => setid(e.target.value)}></input>
           <button onClick={(e) => handleDeleteClient(e, id)}><text>delete</text></button>
+          */}
         </div>
         <LoginPartOne />
-        <LoginPartTwo />
       </div>
     </div>
   )

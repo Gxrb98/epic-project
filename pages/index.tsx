@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import { useAuth } from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 import { useRouter } from 'next/router'
 import { useCount, useDispatchCount } from '../context/Counter'
 import axios from 'axios'

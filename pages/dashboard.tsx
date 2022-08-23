@@ -1,13 +1,15 @@
 import { useRouter } from "next/router";
-import { useAuth } from "../hooks/useAuth";
+import useLoginForm  from "../hooks/useLoginForm";
+import axios from "axios";
+import { useEffect } from 'react'
 
-function Dashboard() {
+const  Dashboard = () => {
 
-    const { saveToken } = useAuth()
+    const { handleLogOut } = useLoginForm({})
     return (
         <div>
             Has iniciado sesión
-            <button onClick={ () => saveToken('')}>Cerrar seisión</button>
+            <button onClick={ handleLogOut }>Cerrar seisión</button>
         </div>
     );
 }

@@ -2,7 +2,7 @@ import { createContext, ReactNode, useState } from "react";
 
 type authContextType = {
     token: string | null;
-    saveToken: (authToken?: string) => void;
+    saveToken: (authToken: string | null) => void;
 };
 
 const authContextDefaultValues: authContextType = {
@@ -19,7 +19,7 @@ type Props = {
 export function AuthProvider({ children }: Props) {
     const [token, setToken] = useState<string>('')
 
-    const saveToken = (authToken?: string ) => {
+    const saveToken = (authToken: string ) => {
         setToken(authToken);
     };
 
