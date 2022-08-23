@@ -12,7 +12,7 @@ import { useEffect } from 'react';
 
 
 const Home: NextPage = ({ stars, id, isConnected, users }: any) => {
-  
+
   console.log(users)
   // documentar
   /**
@@ -23,17 +23,21 @@ const Home: NextPage = ({ stars, id, isConnected, users }: any) => {
   const { token, saveToken } = useAuth();
   const { t } = useTranslation('common')
   const router = useRouter()
- 
 
-  useEffect(()=>{
+
+  useEffect(() => {
     const getTokenFromStorage = () => {
       const USER_TOKEN: string | null = window.localStorage.getItem('token')
+      if (USER_TOKEN == null) {
+        return;
+      }
+      console.log("USER_TOKEN :", USER_TOKEN);
       saveToken(USER_TOKEN)
     }
 
     getTokenFromStorage()
   }, [])
-  
+
   const handleIncrease = (event: void) =>
     dispatch({
       type: 'INCREASE',
@@ -45,7 +49,7 @@ const Home: NextPage = ({ stars, id, isConnected, users }: any) => {
 
   if (token) {
     return (
-      <Dashboard/>
+      <Dashboard />
     )
   } else {
     return (

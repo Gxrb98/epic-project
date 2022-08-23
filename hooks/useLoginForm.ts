@@ -1,7 +1,8 @@
 import { ChangeEvent, useState } from "react";
-import api from "../lib/api";
-import useAuth from "./useAuth";
 
+import { postsignIn, postSignUp } from "../services/auth";
+import { getUsers } from "../services/user";
+import useAuth from "./useAuth";
 
 interface form {
   user?: string,
@@ -26,11 +27,13 @@ const useLoginForm = (initialState: form) => {
       pass: textInput.password
     }
     try {
-      const { data } = await api.post("/auth/signin", loginForm);
-      if (data.token) {
-        window.localStorage.setItem('token', data.token);
-        saveToken(data.token)
+      const { data } = await postsignIn(loginForm);
+      if (!data.token) {
+        console.log(data)
       }
+      window.localStorage.setItem('token', data.token);
+      saveToken(data.token)
+      console.log(data.token);
 
     } catch (error) {
       window.location.href = "/notfound"
@@ -38,7 +41,22 @@ const useLoginForm = (initialState: form) => {
     }
   };
 
-  const handleLogOut = () =>{
+  const getusers = async () => {
+    try {
+      const { data } = await getUsers();
+      if (!data) {
+        console.log(data)
+      }
+      console.log(data);
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
+
+  const handleLogOut = () => {
     window.localStorage.removeItem('token')
     saveToken(null)
   }
@@ -47,7 +65,8 @@ const useLoginForm = (initialState: form) => {
     textInput,
     handlerForm,
     handleSignIn,
-    handleLogOut
+    handleLogOut,
+    getusers
   };
 }
 

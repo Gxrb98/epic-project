@@ -17,9 +17,9 @@ type Props = {
 };
 
 export function AuthProvider({ children }: Props) {
-    const [token, setToken] = useState<string>('')
+    const [token, setToken] = useState<string | null>('')
 
-    const saveToken = (authToken: string ) => {
+    const saveToken = (authToken: string | null) => {
         setToken(authToken);
     };
 

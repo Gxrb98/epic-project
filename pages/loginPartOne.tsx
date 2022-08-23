@@ -1,15 +1,17 @@
 import useLoginForm from '../hooks/useLoginForm';
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-
+import { postsignIn } from '../services/auth';
 
 const LoginPartOne = () => {
   const { t } = useTranslation('common');
-  const { textInput, handlerForm, handleSignIn } = useLoginForm({ user: "", password: ""});
+  const { textInput, handlerForm, handleSignIn, getusers } = useLoginForm({ user: "", password: "" });
 
   const submitBtnHandler = () => {
     alert(`Iniciaste sesión con los siguientes datos: \n Usuario: ${textInput.user} \n Contraseña: ${textInput.password}`)
   }
+
+
 
   return (
     <div className='login-container login1'>
@@ -36,6 +38,7 @@ const LoginPartOne = () => {
           </div>
           <div className='div-center'>
             <button onClick={handleSignIn}>{t("loginBtn")}</button>
+            <button onClick={getusers}>{t("getusers")}</button>
           </div>
         </div>
       </div>
