@@ -25,7 +25,7 @@ const LoginPartOne = () => {
               <label htmlFor='user'>{t("labelUser")}</label>
             </div>
             <div className='textInput1'>
-              <input name='user' type='text' value={textInput.user} onChange={(e) => handlerForm(e)} />
+              <input required name='user' type='text' value={textInput.user} onChange={(e) => handlerForm(e)} />
             </div>
           </div>
           <div className='login-body-block'>
@@ -33,7 +33,7 @@ const LoginPartOne = () => {
               <label htmlFor='password'>{t("labelPassword")}</label>
             </div>
             <div className='textInput1'>
-              <input name='password' type='password' value={textInput.password} onChange={(e) => handlerForm(e)} />
+              <input required name='password' type='password' value={textInput.password} onChange={(e) => handlerForm(e)} />
             </div>
           </div>
           <div className='div-center'>

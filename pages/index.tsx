@@ -13,7 +13,7 @@ import { useEffect } from 'react';
 
 const Home: NextPage = ({ stars, id, isConnected, users }: any) => {
 
-  console.log(users)
+  // console.log(users)
   // documentar
   /**
    * 
@@ -23,29 +23,23 @@ const Home: NextPage = ({ stars, id, isConnected, users }: any) => {
   const { token, saveToken } = useAuth();
   const { t } = useTranslation('common')
   const router = useRouter()
-
+  const sessionToken = "";
 
   useEffect(() => {
+    console.log("token : ", token)
     const getTokenFromStorage = () => {
-      const USER_TOKEN: string | null = window.localStorage.getItem('token')
-      if (USER_TOKEN == null) {
-        return;
+      if (token != null) {
+        saveToken(token)
       }
-      console.log("USER_TOKEN :", USER_TOKEN);
-      saveToken(USER_TOKEN)
+      // const sessionToken: string | null = window.localStorage.getItem('token')
+      // console.log("USER_TOKEN :", sessionToken);
+      // saveToken(sessionToken)
     }
 
     getTokenFromStorage()
-  }, [])
+  }, [token])
 
-  const handleIncrease = (event: void) =>
-    dispatch({
-      type: 'INCREASE',
-    })
-  const handleDecrease = (event: void) =>
-    dispatch({
-      type: 'DECREASE',
-    })
+
 
   if (token) {
     return (
@@ -116,3 +110,17 @@ export async function getServerSideProps({ locale }: any) {
 export default Home
 
 
+
+
+
+
+
+
+  // const handleIncrease = (event: void) =>
+  //   dispatch({
+  //     type: 'INCREASE',
+  //   })
+  // const handleDecrease = (event: void) =>
+  //   dispatch({
+  //     type: 'DECREASE',
+  //   })
