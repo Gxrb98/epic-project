@@ -1,6 +1,7 @@
-export interface a {
-
-}
+export interface LoginForm {
+    user?: string,
+    password?: string
+  }
 
 export interface b {
 

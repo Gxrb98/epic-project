@@ -1,18 +1,12 @@
-import { ChangeEvent, useState } from "react";
-import { postsignIn, postSignUp } from "../services/auth";
+import { ChangeEvent, useState, FormEvent } from "react";
+import { postsignIn } from "../services/auth";
 import { getUsers } from "../services/user";
 import useAuth from "./useAuth";
+import { LoginForm } from "./types";
 
-interface form {
-  user?: string,
-  password?: string
-}
+const useLoginForm = (initialState: LoginForm) => {
 
-
-
-const useLoginForm = (initialState: form) => {
-
-  const [textInput, setTextInput] = useState<form>(initialState);
+  const [textInput, setTextInput] = useState<LoginForm>(initialState);
   const { saveToken } = useAuth();
 
   const handlerForm = (e: ChangeEvent<HTMLInputElement>) => {
@@ -20,7 +14,8 @@ const useLoginForm = (initialState: form) => {
     setTextInput(newValues)
   }
 
-  const handleSignIn = async () => {
+  const handleSignIn = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
     let loginForm = {
       email: textInput.user,
       pass: textInput.password
@@ -69,8 +64,4 @@ const useLoginForm = (initialState: form) => {
   };
 }
 
-
 export default useLoginForm
-
-//         "email": "admin@localhost",
-//         "pass": "admin"

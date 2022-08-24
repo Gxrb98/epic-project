@@ -4,7 +4,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 const Login = () => {
   const { t } = useTranslation('common');
-  const { textInput, handlerForm, handleSignIn, getusers } = useLoginForm({ user: "", password: "" });
+  const { textInput, handlerForm, handleSignIn } = useLoginForm({ user: "", password: "" });
 
   const submitBtnHandler = () => {
     alert(`Iniciaste sesión con los siguientes datos: \n Usuario: ${textInput.user} \n Contraseña: ${textInput.password}`)
@@ -13,7 +13,7 @@ const Login = () => {
 
 
   return (
-    <div className='login-container login1'>
+    <form onSubmit={(e) => handleSignIn(e)} className='login-container login1'>
       <div className='container'>
         <header>
           <h2>{t("loginText1")}</h2>
@@ -36,12 +36,11 @@ const Login = () => {
             </div>
           </div>
           <div className='div-center'>
-            <button onClick={handleSignIn}>{t("loginBtn")}</button>
-            <button onClick={getusers}>{t("getusers")}</button>
+            <button type="submit">{t("loginBtn")}</button>
           </div>
         </div>
       </div>
-    </div>
+    </form>
   )
 }
 
