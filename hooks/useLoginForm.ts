@@ -1,5 +1,4 @@
 import { ChangeEvent, useState } from "react";
-
 import { postsignIn, postSignUp } from "../services/auth";
 import { getUsers } from "../services/user";
 import useAuth from "./useAuth";
