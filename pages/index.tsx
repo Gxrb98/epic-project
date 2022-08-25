@@ -6,12 +6,12 @@ import axios from 'axios'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Login from './login';
-import Dashboard from './dashboard';
+import Home from './home';
 import { useEffect } from 'react';
 
 
 
-const Home: NextPage = ({ users }: any) => {
+const Index: NextPage = ({ users }: any) => {
   
   console.log(users)
   // documentar
@@ -43,9 +43,9 @@ const Home: NextPage = ({ users }: any) => {
       type: 'DECREASE',
     })
 
-  if (token) {
+  if (true) {
     return (
-      <Dashboard/>
+      <Home/>
     )
   } else {
     return (
@@ -109,6 +109,6 @@ export async function getServerSideProps({ locale }: any) {
 
 
 
-export default Home
+export default Index
 
 

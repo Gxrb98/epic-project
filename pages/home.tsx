@@ -1,17 +1,14 @@
-import { useRouter } from "next/router";
 import useLoginForm  from "../hooks/useLoginForm";
-import axios from "axios";
-import { useEffect } from 'react'
+import Nav from "../components/nav";
 
-const  Dashboard = () => {
-
+const  Home = () => {
     const { handleLogOut } = useLoginForm({})
     return (
         <div>
+            <Nav/>
             Has iniciado sesión
             <button onClick={ handleLogOut }>Cerrar seisión</button>
         </div>
     );
 }
-
-export default Dashboard;
+export default Home;
