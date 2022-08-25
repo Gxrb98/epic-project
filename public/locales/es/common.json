@@ -1,13 +1,11 @@
 {
-    "h1": "Un ejemplo basico",
     "change-locale": "Change locale",
-    "to-second-page": "To second page",
     "error-with-status": "A {{statusCode}} error occurred on server",
     "error-without-status": "An error occurred on the server",
     "title": "Home | next-i18next",
     "labelUser": "Usuario",
     "loginText1": "Ingresa como Desarrollador",
-    "loginText2": "Publica un proyecto",
     "labelPassword": "Contraseña",
-    "loginBtn": "Ingresar"
+    "loginBtn": "Ingresar",
+    "nav1": "Inicio"
 }

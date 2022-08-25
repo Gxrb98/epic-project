@@ -2,16 +2,15 @@ import type { NextPage } from 'next'
 import useAuth from "../hooks/useAuth";
 import { useRouter } from 'next/router'
 import { useCount, useDispatchCount } from '../context/Counter'
-import axios from 'axios'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Login from './login';
-import Dashboard from './dashboard';
+import Home from './home';
 import { MutableRefObject, useEffect, useRef } from 'react';
 import useIsMounted from '../hooks/useIsMounted';
 
 
-const Home: NextPage = ({ users }: any) => {
+const Index: NextPage = ({ users }: any) => {
 
 
   // documentar
@@ -40,7 +39,7 @@ const Home: NextPage = ({ users }: any) => {
 
   if (token) {
     return (
-      <Dashboard />
+      <Home />
     )
   } else {
     return (
@@ -67,7 +66,7 @@ export async function getStaticProps({ locale, clientPromise }: any) {
 
 
 
-export default Home
+export default Index
 
 
 
