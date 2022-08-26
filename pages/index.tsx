@@ -63,15 +63,7 @@ export async function getStaticProps({ locale, clientPromise }: any) {
   }
 }
 
-
-
-
 export default Index
-
-
-
-
-
 
 
   // const handleIncrease = (event: void) =>
@@ -101,13 +93,6 @@ export default Index
   //   return () => cancelToken.cancel();
   // }, [])
 
-
-
-
-
-
-
-  
 
 // export async function getServerSideProps({ locale }: any) {
 // try {
