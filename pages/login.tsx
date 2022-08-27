@@ -1,16 +1,20 @@
 import useLoginForm from '../hooks/useLoginForm';
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-
+import { useState } from 'react';
 const Login = () => {
   const { t } = useTranslation('common');
   const { textInput, handlerForm, handleSignIn } = useLoginForm({ user: "", password: "" });
 
-  const submitBtnHandler = () => {
-    alert(`Iniciaste sesión con los siguientes datos: \n Usuario: ${textInput.user} \n Contraseña: ${textInput.password}`)
+  const REMEMBER_USER = JSON.parse(window.localStorage.get('rememberedUser-devFarmApp'))
+  const [rememberUser, setRememberUser] = useState(REMEMBER_USER)
+  const handleRememberUser = (e ) =>{
+    setRememberUser(!rememberUser)
+
+    if(rememberUser){
+      window.localStorage.add('rememberedUser-devFarmApp', JSON.stringify(rememberUser))
+    }
   }
-
-
 
   return (
     <form onSubmit={(e) => handleSignIn(e)} className='login-container login1'>
@@ -38,6 +42,10 @@ const Login = () => {
           <div className='div-center'>
             <button type="submit">{t("loginBtn")}</button>
           </div>
+        </div>
+        <div className='btn'>
+            <input type="checkbox" id="btn-switch" className='checkbox' onClick={ (e) => handleRememberUser(e) }/>
+            <label htmlFor='btn-switch' className='lbl-switch'>{t("remember")}</label>
         </div>
       </div>
     </form>

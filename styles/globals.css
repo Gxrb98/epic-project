@@ -28,21 +28,23 @@ ul{
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      text-align: center;
       font-family: 'Helvetica', sans-serif;
     }
   
     .login1{
-      background-color: #3c295e;
+      background: linear-gradient(190deg, rgba(60,41,94,1) 78%, rgba(255,255,255,1) 78%);
       color: white;
     }
     .container{
-      margin-top: 55%;
-      width: 70%;
+      margin-top: 20%;
+      width: 95%;
+    }
+
+    .container header{
+      text-align: center;
     }
     
     .login-container input{
-      width: 100%;
       border: none;
     }
   
@@ -64,23 +66,23 @@ ul{
       margin-top: 25%;
       padding: 0.5rem 1.5rem;
     }
-  
+
+    
     .login1 button{
       border: solid 1.5px #ffffff;
-      color: #3c295e;
-      background-color: #ffffff;
+      color: #ffffff;
+      background-color: #3c295e;
     }
   
     .login1 button:hover{
-      background-color: #3c295e;
-      color: #ffffff;
+      background-color: #ffffff;
+      color: #3c295e;
       cursor: pointer;
       transition-duration: 0.6s;
     }
   
     .login-body{
-      text-align: start;
-      margin-top: 25%;
+      margin-top: 20%;
     }
     
     .login-body label{
@@ -89,6 +91,8 @@ ul{
     
     .login-body-block{
       margin-top: 10%;
+      width: 80%;
+      margin-left: 10%;
     }
     
     .textInput1{
@@ -108,12 +112,50 @@ ul{
     }
   
     .div-center button{
-      width: 55%;
+      width: 80%;
       font-size: 1.1rem;
+      border-radius: 3rem;
     }
+
+    .btn-switch{
+      margin-top: 1.5rem;
+      display: inline-flex;
+      width: 10rem;
+      margin-left: 10%;
+    }
+
+    .lbl-btn{
+      text-align: center;
+      width: 100rem;
+    }
+
+    .checkbox{
+      height: 0.8rem;
+      background-color: #ffffff;
+    }
+  
   
     .login-view{
       height: 100vh;
       background-color: #e6e6e6;
+    }
+
+    
+
+    @media screen and (min-width: 500px) {
+    
+      .container{
+        background-color: #3c295e;
+        margin-top: 30%;
+        width: 75%;
+      }
+
+
+      .div-center button{
+        height: 3rem;
+        font-size: 1.1rem;
+        border-radius: 3rem;
+      }
+    
     }
   

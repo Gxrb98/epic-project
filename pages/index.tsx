@@ -43,7 +43,9 @@ const Index: NextPage = ({ users }: any) => {
     )
   } else {
     return (
-      <Login />
+      <div className='screen'>
+        <Login />
+      </div>
     )
   }
 }

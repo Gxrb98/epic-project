@@ -4,8 +4,9 @@
     "error-without-status": "An error occurred on the server",
     "title": "Home | next-i18next",
     "labelUser": "Usuario",
-    "loginText1": "Ingresa como Desarrollador",
+    "loginText1": "Inicia sesión",
     "labelPassword": "Contraseña",
     "loginBtn": "Ingresar",
-    "nav1": "Inicio"
+    "nav1": "Inicio",
+    "remember": "Recuerdame"
 }
