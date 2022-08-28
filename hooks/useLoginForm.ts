@@ -1,4 +1,4 @@
-import { ChangeEvent, useState, FormEvent } from "react";
+import { ChangeEvent, useState, FormEvent, useEffect } from "react";
 import { postsignIn } from "../services/auth";
 import { getUsers } from "../services/user";
 import useAuth from "./useAuth";
@@ -7,7 +7,7 @@ import { LoginForm } from "./types";
 const useLoginForm = (initialState: LoginForm) => {
 
   const [textInput, setTextInput] = useState<LoginForm>(initialState);
-  const { saveToken } = useAuth();
+  const { saveToken, switchRememberMe } = useAuth();
 
   const handlerForm = (e: ChangeEvent<HTMLInputElement>) => {
     const newValues = { ...textInput, [e.target.name]: e.target.value }
@@ -49,6 +49,11 @@ const useLoginForm = (initialState: LoginForm) => {
   }
 
 
+  const handleRememberMe = () =>{
+    switchRememberMe()
+  }
+
+  
   const handleLogOut = () => {
     window.localStorage.removeItem('token')
     saveToken(null)
@@ -59,6 +64,7 @@ const useLoginForm = (initialState: LoginForm) => {
     handlerForm,
     handleSignIn,
     handleLogOut,
+    handleRememberMe,
     getusers
   };
 }
