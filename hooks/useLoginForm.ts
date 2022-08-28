@@ -48,9 +48,6 @@ const useLoginForm = (initialState: LoginForm) => {
     }
   }
 
-  const RememberUserHandler = () =>{
-    
-  }
 
   const handleLogOut = () => {
     window.localStorage.removeItem('token')

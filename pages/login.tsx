@@ -1,21 +1,32 @@
 import useLoginForm from '../hooks/useLoginForm';
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 const Login = () => {
   const { t } = useTranslation('common');
   const { textInput, handlerForm, handleSignIn } = useLoginForm({ user: "", password: "" });
 
-  const REMEMBER_USER = JSON.parse(window.localStorage.get('rememberedUser-devFarmApp'))
-  const [rememberUser, setRememberUser] = useState(REMEMBER_USER)
-  const handleRememberUser = (e ) =>{
-    setRememberUser(!rememberUser)
+  const [rememberMe, setRememberMe] = useState(false)
 
-    if(rememberUser){
-      window.localStorage.add('rememberedUser-devFarmApp', JSON.stringify(rememberUser))
+  const handleRememberMe = () => {
+    
+    console.log("Al entrar soy: ", rememberMe)
+    setRememberMe(!rememberMe)
+    console.log("actualmente soy: ", rememberMe)
+
+    if(!rememberMe){
+      window.localStorage.setItem("devFarmRememberMe", JSON.stringify(true))
+    }else{
+      window.localStorage.removeItem("devFarmRememberMe")
     }
   }
 
+  
+  
+
+  useEffect(() => {
+      
+  }, [rememberMe])
   return (
     <form onSubmit={(e) => handleSignIn(e)} className='login-container login1'>
       <div className='container'>
@@ -43,9 +54,9 @@ const Login = () => {
             <button type="submit">{t("loginBtn")}</button>
           </div>
         </div>
-        <div className='btn'>
-            <input type="checkbox" id="btn-switch" className='checkbox' onClick={ (e) => handleRememberUser(e) }/>
-            <label htmlFor='btn-switch' className='lbl-switch'>{t("remember")}</label>
+        <div className='btn-check'>
+            <input type="checkbox" checked={rememberMe} name="rememberme" id="rememberme" className='checkbox' onClick={handleRememberMe }/>
+            <label htmlFor='rememberme' className='lbl-switch'>{t("remember")} {rememberMe ? "true": false}</label>
         </div>
       </div>
     </form>

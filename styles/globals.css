@@ -19,6 +19,13 @@ ul{
   list-style-type: none;
 }
 
+
+:root {
+  --login-primary-color: rgba(60,41,94,1);
+  --login-secondary-color: rgb(245, 51, 100);
+  --login-text-color: rgb(255, 255, 255);
+}
+
 /***********************************************************************************************************
 *****************************************Estilos para telefonos******************************************
 ***********************************************************************************************************/
@@ -29,11 +36,12 @@ ul{
       justify-content: center;
       align-items: flex-start;
       font-family: 'Helvetica', sans-serif;
+      color: var(--login-text-color)
     }
   
     .login1{
-      background: linear-gradient(190deg, rgba(60,41,94,1) 78%, rgba(255,255,255,1) 78%);
-      color: white;
+      background: linear-gradient(190deg,  var(--login-primary-color) 78%, var(--login-secondary-color) 78%);
+      color: var(--login-text-color);
     }
     .container{
       margin-top: 20%;
@@ -49,8 +57,8 @@ ul{
     }
   
     .login1 input{
-      background-color: #3c295e;
-      color: white;
+      background-color: var(--login-primary-color);
+      color: var(--login-text-color)
     }
  
     
@@ -70,13 +78,13 @@ ul{
     
     .login1 button{
       border: solid 1.5px #ffffff;
-      color: #ffffff;
-      background-color: #3c295e;
+      color: var(--login-text-color);
+      background-color: var(--login-primary-color);
     }
   
     .login1 button:hover{
-      background-color: #ffffff;
-      color: #3c295e;
+      background-color: var(--login-secondary-color);
+      color: var(--login-text-color);
       cursor: pointer;
       transition-duration: 0.6s;
     }
@@ -96,7 +104,7 @@ ul{
     }
     
     .textInput1{
-      border-bottom: solid 1px white;
+      border-bottom: solid 1px var(--login-text-color);
     }
   
     .login-container input{
@@ -110,6 +118,15 @@ ul{
       justify-content: center;
       align-items: center;
     }
+
+    .btn-check{
+      margin-left: 10%;
+      margin-top: 1.5rem;
+      display: inline-flex;
+      row-gap: 3px;
+      
+      width: fit-content;
+    }
   
     .div-center button{
       width: 80%;
@@ -119,8 +136,7 @@ ul{
 
     .btn-switch{
       margin-top: 1.5rem;
-      display: inline-flex;
-      width: 10rem;
+      width: 8rem;
       margin-left: 10%;
     }
 
@@ -131,13 +147,12 @@ ul{
 
     .checkbox{
       height: 0.8rem;
-      background-color: #ffffff;
     }
   
   
     .login-view{
       height: 100vh;
-      background-color: #e6e6e6;
+      background-color: var(--login-text-color);
     }
 
     
@@ -145,7 +160,7 @@ ul{
     @media screen and (min-width: 500px) {
     
       .container{
-        background-color: #3c295e;
+        background-color: var(--login-primary-color);
         margin-top: 30%;
         width: 75%;
       }
