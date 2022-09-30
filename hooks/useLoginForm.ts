@@ -3,12 +3,12 @@ import { postsignIn } from "../services/auth";
 import { getUsers } from "../services/user";
 import useAuth from "./useAuth";
 import { LoginForm } from "./types";
+import { LOCAL_STORAGE_NAME } from "../pages/index"
 
 const useLoginForm = (initialState: LoginForm) => {
 
   const [textInput, setTextInput] = useState<LoginForm>(initialState);
-  const { saveToken, switchRememberMe } = useAuth();
-
+  const { saveToken, switchRememberMe, rememberMe, token } = useAuth();
   const handlerForm = (e: ChangeEvent<HTMLInputElement>) => {
     const newValues = { ...textInput, [e.target.name]: e.target.value }
     setTextInput(newValues)
@@ -25,8 +25,10 @@ const useLoginForm = (initialState: LoginForm) => {
       if (!data.token) {
         console.log(data)
       }
-      window.localStorage.setItem('token', data.token);
       saveToken(data.token)
+      if(rememberMe){
+        window.localStorage.setItem(LOCAL_STORAGE_NAME, data.token);
+      }
       console.log(data.token);
 
     } catch (error) {
@@ -55,12 +57,13 @@ const useLoginForm = (initialState: LoginForm) => {
 
   
   const handleLogOut = () => {
-    window.localStorage.removeItem('token')
+    window.localStorage.removeItem(LOCAL_STORAGE_NAME)
     saveToken(null)
   }
 
   return {
     textInput,
+    setTextInput,
     handlerForm,
     handleSignIn,
     handleLogOut,

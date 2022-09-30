@@ -3,19 +3,15 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import useAuth from "../hooks/useAuth";
 import { useEffect } from 'react'
+import { LOCAL_STORAGE_NAME } from "./index"
 
 const Login = () => {
   const { t } = useTranslation('common');
-  const { textInput,  handlerForm, handleSignIn, handleRememberMe  } = useLoginForm({ user: "", password: "" });
+  const { textInput, setTextInput, handlerForm, handleSignIn, handleRememberMe  } = useLoginForm({ user: "", password: "" });
+  const { token, saveToken } = useAuth();
   const { rememberMe } = useAuth();
 
-  useEffect( () => {
-    if(rememberMe){
-      window.localStorage.setItem("devFarmRememberMe", JSON.stringify(rememberMe))
-    }else{
-      window.localStorage.removeItem("devFarmRememberMe")
-    }
-  } ,[rememberMe])
+
 
   return (
     <form onSubmit={(e) => handleSignIn(e)} className='login-container login1'>

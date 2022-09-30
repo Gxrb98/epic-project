@@ -1,24 +1,21 @@
 import { createContext, ReactNode, useState } from "react";
 
-export interface Storage{
-    token: authContextType["token"],
-    rememberMe: authContextType["rememberMe"]
-}
+
 
 type authContextType = {
     token: string | null;
-    rememberMe: boolean ;
-    storage: Storage;
+    rememberMe: boolean;
     saveToken: (authToken: string | null) => void;
+    saveRememberMe: ( rememberMe: boolean) => void;
     switchRememberMe: () => void;
 };
 
 const authContextDefaultValues: authContextType = {
     token: "",
     rememberMe: false,
-    storage: { token: "", rememberMe: false},
     saveToken: () => { },
-    switchRememberMe: () => { }
+    saveRememberMe: () => { },
+    switchRememberMe: () => { },
 };
 
 export const AuthContext = createContext<authContextType>(authContextDefaultValues);
@@ -28,28 +25,29 @@ type Props = {
 };
 
 export function AuthProvider({ children }: Props) {
-    const [token, setToken] = useState<string | null>('')
-    const [rememberMe, setRememberMe] = useState<boolean>(false)
-    const [storage, setStorage] = useState({
-        token: "", rememberMe: false
-    })
+    const [token, setToken] = useState<authContextType["token"]>('')
+    const [rememberMe, setRememberMe] = useState<authContextType["rememberMe"]>(false)
 
 
     const saveToken = (authToken: string | null) => {
+
         setToken(authToken);
     };
 
-    const switchRememberMe = () => {
+    const switchRememberMe = (): void => {
         setRememberMe(!rememberMe);
     };
 
+    const saveRememberMe = (rememberMe: boolean): void =>{
+        setRememberMe(rememberMe);
+    }
 
     const value = {
         token,
         rememberMe,
-        storage,
         saveToken,
-        switchRememberMe
+        switchRememberMe,
+        saveRememberMe
     };
 
     return (

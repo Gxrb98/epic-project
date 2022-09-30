@@ -10,6 +10,8 @@ import { MutableRefObject, useEffect, useRef } from 'react';
 import useIsMounted from '../hooks/useIsMounted';
 
 
+export const LOCAL_STORAGE_NAME = 'devFarmSession'
+
 const Index: NextPage = ({ users }: any) => {
 
 
@@ -19,23 +21,21 @@ const Index: NextPage = ({ users }: any) => {
    */
   const count = useCount();
   const dispatch = useDispatchCount();
-  const { token, saveToken } = useAuth();
+  const { token, saveToken, saveRememberMe} = useAuth();
   const { t } = useTranslation('common')
   const router = useRouter()
-
+  
   const mounted: MutableRefObject<boolean> = useRef(false)
 
 
   const { datos, isloading, err, } = useIsMounted("https://api.github.com/repos/vercel/next.js", "get")
 
-  const getTokenFromStorage = () => {
-    const USER_TOKEN: string | null = window.localStorage.getItem('token')
-    saveToken(USER_TOKEN)
+  const getLocalStorage = () => {
+    const LOCAL_STORAGE = JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_NAME))
+    if(LOCAL_STORAGE){
+      saveToken(LOCAL_STORAGE)
+    }
 }
-
-  useEffect(() => {
-    getTokenFromStorage()
-  }, []);
 
   if (token) {
     return (

@@ -157,7 +157,7 @@ ul{
 
     
 
-    @media screen and (min-width: 500px) {
+    @media screen and (min-width: 821px) {
     
       .container{
         background-color: var(--login-primary-color);
@@ -171,6 +171,24 @@ ul{
         font-size: 1.1rem;
         border-radius: 3rem;
       }
+
+      .screen{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Helvetica', sans-serif;
+      }
+
+      .login-container {
+      width: 35rem;
+      height: 50rem;
+    }
+
+    .container{
+      margin-top: 05%;
+    }
     
     }
   
