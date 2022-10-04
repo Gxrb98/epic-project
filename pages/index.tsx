@@ -21,7 +21,7 @@ const Index: NextPage = ({ users }: any) => {
    */
   const count = useCount();
   const dispatch = useDispatchCount();
-  const { token, saveToken, saveRememberMe} = useAuth();
+  const { token, saveToken } = useAuth();
   const { t } = useTranslation('common')
   const router = useRouter()
   
@@ -31,11 +31,15 @@ const Index: NextPage = ({ users }: any) => {
   const { datos, isloading, err, } = useIsMounted("https://api.github.com/repos/vercel/next.js", "get")
 
   const getLocalStorage = () => {
-    const LOCAL_STORAGE = JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_NAME))
+    const LOCAL_STORAGE = window.localStorage.getItem(LOCAL_STORAGE_NAME)
     if(LOCAL_STORAGE){
       saveToken(LOCAL_STORAGE)
     }
 }
+
+  useEffect(() =>{
+    getLocalStorage() 
+  }, [token])
 
   if (token) {
     return (

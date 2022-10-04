@@ -1,13 +1,11 @@
-import useLoginForm from "../hooks/useLoginForm";
-import Nav from "../components/nav";
+import Navigation from "../components/navbar/Navigation";
 
 const Home = () => {
-    const { handleLogOut } = useLoginForm({})
+    
     return (
         <div>
-            <Nav />
-            Has iniciado sesión
-            <button onClick={handleLogOut}>Cerrar seisión</button>
+            <Navigation />
+            
         </div>
     );
 }

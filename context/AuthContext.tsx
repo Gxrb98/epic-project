@@ -6,7 +6,6 @@ type authContextType = {
     token: string | null;
     rememberMe: boolean;
     saveToken: (authToken: string | null) => void;
-    saveRememberMe: ( rememberMe: boolean) => void;
     switchRememberMe: () => void;
 };
 
@@ -14,7 +13,6 @@ const authContextDefaultValues: authContextType = {
     token: "",
     rememberMe: false,
     saveToken: () => { },
-    saveRememberMe: () => { },
     switchRememberMe: () => { },
 };
 
@@ -38,16 +36,11 @@ export function AuthProvider({ children }: Props) {
         setRememberMe(!rememberMe);
     };
 
-    const saveRememberMe = (rememberMe: boolean): void =>{
-        setRememberMe(rememberMe);
-    }
-
     const value = {
         token,
         rememberMe,
         saveToken,
-        switchRememberMe,
-        saveRememberMe
+        switchRememberMe
     };
 
     return (

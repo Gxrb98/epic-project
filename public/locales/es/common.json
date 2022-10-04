@@ -7,6 +7,7 @@
     "loginText1": "Iniciar sesión",
     "labelPassword": "Contraseña",
     "loginBtn": "Ingresar",
-    "nav1": "Inicio",
+    "navLi1": "Buscar proyectos",
+    "navLi2": "Mis proyectos",
     "remember": "Mantener sesión"
 }

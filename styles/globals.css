@@ -21,14 +21,61 @@ ul{
 
 
 :root {
-  --login-primary-color: rgba(60,41,94,1);
-  --login-secondary-color: rgb(245, 51, 100);
+  --primary-color: rgba(60,41,94,1);
+  --secondary-color: rgb(245, 51, 100);
   --login-text-color: rgb(255, 255, 255);
+}
+
+button{
+  cursor: pointer;
 }
 
 /***********************************************************************************************************
 *****************************************Estilos para telefonos******************************************
 ***********************************************************************************************************/
+
+    .navigation{
+      height: 70px;
+      background-color: var(--primary-color);
+      color: var(--login-text-color);
+    }
+    .mobileNav{
+      display: flex;
+      align-items: center;
+    }
+    .navigation .mobileNav ul{
+      position: absolute;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      flex-direction: column;
+      background-color: var(--primary-color);
+      top: 70px;
+      border-top: 2px solid var(--secondary-color);
+    }
+
+    .navigation .mobileNav ul li{
+      height: 40px;
+      cursor: pointer;
+      padding-top: 10px;
+    }
+
+    .navigation .mobileNav ul li:hover{
+      color: var(--secondary-color);
+    }
+
+    .hamburguer{
+      top: 2%;
+      position: absolute;
+      right: 5%;
+      cursor: pointer;
+    }
+
+    .nav{
+      display: none;
+    }
+
     .login-container {
       width: 100vw;
       height: 100vh;
@@ -40,7 +87,7 @@ ul{
     }
   
     .login1{
-      background: linear-gradient(190deg,  var(--login-primary-color) 78%, var(--login-secondary-color) 78%);
+      background: linear-gradient(190deg,  var(--primary-color) 78%, var(--secondary-color) 78%);
       color: var(--login-text-color);
     }
     .container{
@@ -57,7 +104,7 @@ ul{
     }
   
     .login1 input{
-      background-color: var(--login-primary-color);
+      background-color: var(--primary-color);
       color: var(--login-text-color)
     }
  
@@ -79,11 +126,11 @@ ul{
     .login1 button{
       border: solid 1.5px #ffffff;
       color: var(--login-text-color);
-      background-color: var(--login-primary-color);
+      background-color: var(--primary-color);
     }
   
     .login1 button:hover{
-      background-color: var(--login-secondary-color);
+      background-color: var(--secondary-color);
       color: var(--login-text-color);
       cursor: pointer;
       transition-duration: 0.6s;
@@ -155,12 +202,41 @@ ul{
       background-color: var(--login-text-color);
     }
 
-    
+/***********************************************************************************************************
+*************************************Estilos para otros dispositivos****************************************
+***********************************************************************************************************/   
 
     @media screen and (min-width: 821px) {
+
+      .mobileNav{
+        display: none;
+      }
+
+      .nav{
+        display: flex;
+        background-color: var(--primary-color);
+      }
+
+      .navigation .nav ul{
+        margin-top: 25px;
+        display: flex;
+        justify-content: center;
+        gap: 6rem;
+        width: 100%;
+        flex-direction: row;
+        background-color: var(--primary-color);
+      }
+  
+      .navigation .nav ul li{
+        cursor: pointer;
+      }
+  
+      .navigation .nav ul li:hover{
+        color: var(--secondary-color);
+      }
     
       .container{
-        background-color: var(--login-primary-color);
+        background-color: var(--primary-color);
         margin-top: 30%;
         width: 75%;
       }

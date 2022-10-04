@@ -8,6 +8,7 @@
     "loginText2": "Publish a project",
     "labelPassword": "Password",
     "loginBtn": "Sign In",
-    "nav1": "Home",
+    "navLi1": "Search a project",
+    "navLi2": "My projects",
     "remember": "Maintain session"
 }
