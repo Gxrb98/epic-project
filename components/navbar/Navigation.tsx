@@ -5,8 +5,8 @@ import Nav from './Nav'
 const Navigation = () => {
   return (
     <div className='navigation'>
-      <MobileNav/>
-      <Nav/>
+      <MobileNav />
+      <Nav />
     </div>
   )
 }

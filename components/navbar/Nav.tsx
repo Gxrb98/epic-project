@@ -1,11 +1,11 @@
-import NavLinks from "./navLinks"
+import NavLinks from "./NavLinks"
 
 const Nav = () => {
   return (
     <div className="nav">
-        <NavLinks/>
+      <NavLinks />
     </div>
   )
-  
+
 }
 export default Nav
